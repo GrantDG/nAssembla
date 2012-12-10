@@ -244,7 +244,7 @@ namespace nAssembla.Proxy
             {
                 ContractResolver = new UpdatableContractResolver(),
                 NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore,
-                DefaultValueHandling = Newtonsoft.Json.DefaultValueHandling.IgnoreAndPopulate,
+                //DefaultValueHandling = Newtonsoft.Json.DefaultValueHandling.IgnoreAndPopulate,
             });
 
             var objectAttribute = entity.GetType().GetCustomAttributes(typeof(JsonObjectAttribute), false);
