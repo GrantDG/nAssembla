@@ -23,6 +23,13 @@ namespace nAssembla.Proxy
             get { return true; }
         }
 
+        public DTO.CustomField GetByTitle(string title)
+        {
+            if(DataCache == null || DataCache.Count == 0)
+                throw new InvalidOperationException("Data must be cached to use GetByTitle");
+            return DataCache.SingleOrDefault(cf => cf.Title == title);
+        }
+
         
       
     }

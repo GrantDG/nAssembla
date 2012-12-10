@@ -9,6 +9,8 @@ using System.Xml.Serialization;
 using System.IO;
 using Newtonsoft.Json;
 using nAssembla.DTO.Enums;
+using nAssembla.Support;
+using System.ComponentModel;
 
 namespace nAssembla.DTO
 {
@@ -16,7 +18,10 @@ namespace nAssembla.DTO
     [JsonObject(MemberSerialization.OptIn, Title = "ticket")]
     public class Ticket : DTOAttachmentAwareBase
     {
-        public Ticket() { }
+        public Ticket() 
+        { 
+            Priority = Enums.Priority.Normal; 
+        }
 
         #region Properties
 
@@ -35,7 +40,7 @@ namespace nAssembla.DTO
         [JsonProperty("status"), IsUpdatable]
         public string StatusName { get; set; }
 
-        [JsonProperty("importance"), IsUpdatable]
+        [JsonProperty("importance")]
         public float Importance { get; set; }
 
         [JsonProperty("story_importance"), IsUpdatable]
@@ -57,7 +62,7 @@ namespace nAssembla.DTO
 
         public TicketComponent Component { get; set; }
 
-        [JsonProperty("is_story"), IsUpdatable]
+        [JsonProperty("is_story"), JsonConverter(typeof(BooleanBitConverter)), IsUpdatable]
         public bool IsStory { get; set; }
 
         [JsonProperty("reporter_id"), IsUpdatable]
@@ -98,7 +103,9 @@ namespace nAssembla.DTO
 
         public IEnumerable<TicketAssociation> Associations { get; set; }
 
-        [JsonProperty("custom_fields")]
+        [JsonProperty("custom_fields"), 
+        JsonConverter(typeof(CustomFieldsConverter)), 
+        IsUpdatable]
         public Dictionary<string, object> CustomFields { get; set; }
 
 

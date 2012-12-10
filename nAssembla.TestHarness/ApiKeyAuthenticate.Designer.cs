@@ -86,7 +86,7 @@
             // cancelButton
             // 
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelButton.Location = new System.Drawing.Point(258, 88);
+            this.cancelButton.Location = new System.Drawing.Point(258, 196);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 5;
@@ -96,7 +96,7 @@
             // 
             // okButton
             // 
-            this.okButton.Location = new System.Drawing.Point(177, 88);
+            this.okButton.Location = new System.Drawing.Point(177, 196);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(75, 23);
             this.okButton.TabIndex = 6;
@@ -113,7 +113,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelButton;
-            this.ClientSize = new System.Drawing.Size(367, 125);
+            this.ClientSize = new System.Drawing.Size(367, 231);
             this.Controls.Add(this.okButton);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.linkLabel1);
@@ -122,7 +122,7 @@
             this.Controls.Add(this.apiKey);
             this.Controls.Add(this.label1);
             this.Name = "ApiKeyAuthenticate";
-            this.Text = "API Authentication";
+            this.Text = "Authentication Method";
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

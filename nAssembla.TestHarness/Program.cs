@@ -18,41 +18,42 @@ namespace nAssembla.TestHarness
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            var canContinue = !string.IsNullOrEmpty(Settings.Default.ApiKey) && !string.IsNullOrEmpty(Settings.Default.ApiSecret);
+            var canContinue = !string.IsNullOrEmpty(Settings.Default.ApiKey) && !string.IsNullOrEmpty(Settings.Default.ApiSecret)
+                && !string.IsNullOrEmpty(Settings.Default.ClientKey) && !string.IsNullOrEmpty(Settings.Default.ClientSecret);
 
             if (!canContinue)
             {
-                var f1 = new ApiKeyAuthenticate();
-                canContinue = f1.ShowDialog() == DialogResult.OK;
+                var auth = new ApiKeyAuthenticate();
+                canContinue = auth.ShowDialog() == DialogResult.OK;
             }
 
 
-            if (canContinue)
+            if (canContinue && !string.IsNullOrEmpty(Settings.Default.ApiKey) && !string.IsNullOrEmpty(Settings.Default.ApiSecret))
             {
                 nAssembla.Configuration.ApiKey = Settings.Default.ApiKey;
                 nAssembla.Configuration.ApiSecret = Settings.Default.ApiSecret;
                 Application.Run(new MainForm()); 
             }
+            else if (canContinue && !string.IsNullOrEmpty(Settings.Default.ClientKey) && !string.IsNullOrEmpty(Settings.Default.ClientSecret))
+            {
+                nAssembla.Configuration.ClientId = Settings.Default.ClientKey;
+                nAssembla.Configuration.ClientSecret = Settings.Default.ClientSecret;
+
+                var f1 = new PINAuthenticate();
+                DialogResult dr = f1.ShowDialog();
+                if (dr == DialogResult.OK)
+                {
+                    Application.Run(new MainForm()); 
+                }
+                else
+                {
+                    Application.Exit();
+                } 
+            }
             else
-                Application.Exit();
+                Application.Exit();           
 
-           
-
-            //Awaiting resolution of: https://www.assembla.com/spaces/AssemblaSupport/support/tickets/5125-api---pin-code-authorisation#/activity/ticket:
-
-            //nAssembla.Configuration.ClientId = "";
-            //nAssembla.Configuration.ClientSecret = "";
             
-            //var f1 = new PINAuthenticate();
-            //DialogResult dr = f1.ShowDialog();
-            //if (dr == DialogResult.OK)
-            //{
-                
-            //}
-            //else
-            //{
-            //    Application.Exit();
-            //} 
         }
     }
 }

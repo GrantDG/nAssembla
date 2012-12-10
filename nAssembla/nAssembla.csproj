@@ -29,7 +29,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>TRACE;NET4_5</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
@@ -72,6 +72,7 @@
     <Compile Include="DTO\Enums\UserRoleType.cs" />
     <Compile Include="Proxy\Enums\CachableDataTypes.cs" />
     <Compile Include="Proxy\DataLoadedEventArgs.cs" />
+    <Compile Include="Support\BooleanBitConverter.cs" />
     <Compile Include="Support\ConfigurationSection.cs" />
     <Compile Include="DTO\UserRole.cs" />
     <Compile Include="DTO\TicketAssociation.cs" />
@@ -93,6 +94,7 @@
     <Compile Include="DTO\User.cs" />
     <Compile Include="DTO\Interfaces\IReport.cs" />
     <Compile Include="DTO\Interfaces\IStatus.cs" />
+    <Compile Include="Support\CustomFieldsConverter.cs" />
     <Compile Include="Support\nAssemblaExceptionEventArgs.cs" />
     <Compile Include="Support\IsUpdatableAttribute.cs" />
     <Compile Include="NAssembla.cs" />

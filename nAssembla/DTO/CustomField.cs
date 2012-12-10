@@ -49,5 +49,10 @@ namespace nAssembla.DTO
                 return Id;
             }
         }
+
+        public override int GetHashCode()
+        {
+            return Id;
+        }
     }
 }
